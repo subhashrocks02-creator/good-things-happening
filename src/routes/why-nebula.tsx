@@ -32,8 +32,9 @@ export const Route = createFileRoute("/why-nebula")({
       },
     ],
   }),
-  component: WhyNebula;
+  component: WhyNebula,
 });
+
 
 const reasons = [
   {
