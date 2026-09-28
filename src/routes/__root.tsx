@@ -77,21 +77,47 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Nebula Capital Advisory Pvt. Ltd. | Proprietary Trading & Careers" },
+      {
+        name: "description",
+        content:
+          "Nebula Capital Advisory Pvt. Ltd. is a Pune-based proprietary trading firm focused on disciplined trading, market research, technology, data and high-performing teams.",
+      },
+      { name: "author", content: "Nebula Capital Advisory Pvt. Ltd." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Nebula Capital Advisory Pvt. Ltd.",
+          description:
+            "Pune-based proprietary trading firm focused on disciplined trading, market research, technology and data.",
+          email: "hradmin@nebulacapital.co.in",
+          identifier: "U66190PN2025PTC238319",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Sky Sereno Road, near DY Patil University Road, Lohegaon",
+            addressLocality: "Pune",
+            addressRegion: "Maharashtra",
+            postalCode: "411047",
+            addressCountry: "IN",
+          },
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -119,8 +145,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen flex-col">
+        <SiteHeader />
+        <main className="flex-1">
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <SiteFooter />
+      </div>
+      <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }
+
