@@ -8,9 +8,10 @@ export function PageHero({
 }: {
   eyebrow: string;
   title: string;
-  lead?: string;
-  children?: ReactNode;
+  lead?: string | undefined;
+  children?: ReactNode | undefined;
 }) {
+
   return (
     <section className="ink-panel relative overflow-hidden">
       <div className="grid-lines absolute inset-0 opacity-60" aria-hidden="true" />
