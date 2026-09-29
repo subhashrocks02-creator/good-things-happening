@@ -10,9 +10,10 @@ export function LegalPage({
 }: {
   eyebrow: string;
   title: string;
-  lead?: string;
+  lead?: string | undefined;
   children: ReactNode;
 }) {
+
   return (
     <>
       <PageHero eyebrow={eyebrow} title={title} lead={lead} />
