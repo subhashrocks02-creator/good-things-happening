@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as TermsOfUseRouteImport } from './routes/terms-of-use'
 import { Route as WhyNebulaRouteImport } from './routes/why-nebula'
 import { Route as CareersIndexRouteImport } from './routes/careers.index'
 import { Route as CareersSlugRouteImport } from './routes/careers.$slug'
@@ -23,6 +27,26 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfUseRoute = TermsOfUseRouteImport.update({
+  id: '/terms-of-use',
+  path: '/terms-of-use',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WhyNebulaRoute = WhyNebulaRouteImport.update({
@@ -44,6 +68,10 @@ const CareersSlugRoute = CareersSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-of-use': typeof TermsOfUseRoute
   '/why-nebula': typeof WhyNebulaRoute
   '/careers/$slug': typeof CareersSlugRoute
   '/careers/': typeof CareersIndexRoute
@@ -51,6 +79,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-of-use': typeof TermsOfUseRoute
   '/why-nebula': typeof WhyNebulaRoute
   '/careers/$slug': typeof CareersSlugRoute
   '/careers': typeof CareersIndexRoute
@@ -59,22 +91,57 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/disclaimer': typeof DisclaimerRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-of-use': typeof TermsOfUseRoute
   '/why-nebula': typeof WhyNebulaRoute
   '/careers/$slug': typeof CareersSlugRoute
   '/careers/': typeof CareersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/why-nebula' | '/careers/$slug' | '/careers/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/disclaimer'
+    | '/privacy-policy'
+    | '/terms-of-use'
+    | '/why-nebula'
+    | '/careers/$slug'
+    | '/careers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/why-nebula' | '/careers/$slug' | '/careers'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/disclaimer'
+    | '/privacy-policy'
+    | '/terms-of-use'
+    | '/why-nebula'
+    | '/careers/$slug'
+    | '/careers'
   id:
-    '__root__' | '/' | '/about' | '/why-nebula' | '/careers/$slug' | '/careers/'
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/disclaimer'
+    | '/privacy-policy'
+    | '/terms-of-use'
+    | '/why-nebula'
+    | '/careers/$slug'
+    | '/careers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DisclaimerRoute: typeof DisclaimerRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  TermsOfUseRoute: typeof TermsOfUseRoute
   WhyNebulaRoute: typeof WhyNebulaRoute
   CareersSlugRoute: typeof CareersSlugRoute
   CareersIndexRoute: typeof CareersIndexRoute
@@ -94,6 +161,34 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-use': {
+      id: '/terms-of-use'
+      path: '/terms-of-use'
+      fullPath: '/terms-of-use'
+      preLoaderRoute: typeof TermsOfUseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/why-nebula': {
@@ -123,6 +218,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DisclaimerRoute: DisclaimerRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  TermsOfUseRoute: TermsOfUseRoute,
   WhyNebulaRoute: WhyNebulaRoute,
   CareersSlugRoute: CareersSlugRoute,
   CareersIndexRoute: CareersIndexRoute,
